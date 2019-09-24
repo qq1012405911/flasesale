@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--<classPathEntry  location="mysql-connector-java-5.1.30.jar"></classPathEntry>-->
+    <context id="DB2Tables"  targetRuntime="MyBatis3">
+
+        <!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <!-- 这里的type里写的是你的实现类的类全路径 -->
+        <!--<commentGenerator type="org.mybatis.generator.MyCommentGenerator">-->
+            <!--<property name="suppressDate" value="true"/>-->
+            <!--<property name="suppressAllComments" value="false"/>-->
+        <!--</commentGenerator>-->
+
+        <!-- 指定数据库地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/flashsale?characterEncoding=UTF-8" userId="root" password="root">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--指定实体类路径-->
+        <javaModelGenerator targetPackage="com.dongxp.flashsale.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--指定Mapper.xml路径-->
+        <sqlMapGenerator targetPackage="mapping" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 指定Mapper.java路径-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.dongxp.flashsale.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 指定表、实体类名、是否自动生成部分方法-->
+        <table tableName="user_info" domainObjectName="UserDo" enableCountByExample="false" enableUpdateByExample = "false"
+        enableDeleteByExample = "false" enableSelectByExample =  "false">
+        </table>
+        <table tableName="user_password" domainObjectName="UserPasswordDo" enableCountByExample="false" enableUpdateByExample = "false"
+               enableDeleteByExample = "false" enableSelectByExample =  "false">
+        </table>
+    </context>
+</generatorConfiguration>
